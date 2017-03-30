@@ -122,7 +122,7 @@ input{
 }  
    </style> 
 </head>  
-<body>  
+<body oncontextmenu="return true">  
     <div id="login">  
         <button class="message" type="submit">Login</button>  
     </div>
@@ -133,9 +133,25 @@ input{
             <form>  	
                 <input type="text" class="user" required="required" placeholder="Username" name="userid"></input>  
                 <input type="password" class="key" required="required" placeholder="Password" name="pswrd"></input>  
-                <button class="submit" type="submit" >Login</button>  
+                <button class="submit" type="submit" onclick="check(this.form)">Login</button>  
             </form>  
         </div> 
     </div>  
+    <script language="javascript">
+    </script>
+    <script>
+        function check(form){
+            if((form.userid.value=="april"&& form.pswrd.value =="123456")||(form.userid.value=="tom"&& form.pswrd.value=="12345678"))
+            {
+                alert("Congratulations!登陆成功！");
+                form.reset();
+            }
+            else
+            {
+                alert("The username and password you entered don't match!(您输入的用户名或密码不正确！)");
+                form.reset(); 
+            }
+        } 
+    </script>
 </body>  
 </html>  
