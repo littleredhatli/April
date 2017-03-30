@@ -132,16 +132,59 @@ input{
         <div id="in">
             <form>  	
                 <input type="text" class="user" required="required" placeholder="Username" name="userid"></input>  
-                <input type="password" class="key" required="required" placeholder="Password" name="pswrd"></input>  
+                <input type="password" class="key" required="required"  placeholder="Password" name="pswrd"></input>  
                 <button class="submit" type="submit" onclick="check(this.form)">Login</button>  
             </form>  
         </div> 
     </div>  
     <script language="javascript">
+    window.alert = function(str){
+        var shield = document.createElement("DIV");
+        shield.id = "shield";
+        shield.style.position = "absolute";
+        shield.style.left = "50%";
+        shield.style.top = "50%";
+        shield.style.width = "350px";
+        shield.style.height = "300px";
+        shield.style.marginLeft = "-140px";
+        shield.style.marginTop = "-110px";
+        shield.style.zIndex = "25";
+        var alertFram = document.createElement("DIV");
+        alertFram.id="alertFram";
+        alertFram.style.position = "absolute";
+        alertFram.style.width = "540px";
+        alertFram.style.height = "300px";
+        alertFram.style.left = "40.5%";
+        alertFram.style.top = "48%";
+        alertFram.style.marginLeft = "-140px";
+        alertFram.style.marginTop = "-110px";
+        alertFram.style.textAlign = "center";
+        alertFram.style.lineHeight = "150px";
+        alertFram.style.zIndex = "300";
+        strHtml = "<ul style=\"list-style:none; margin:0px; padding:0px ;width:100%\">\n";
+        strHtml += " <li style=\"background:#968267; text-align:left; padding-left:20px; font-size:16px;font-weight:bold;height:60px;line-height:54px;border:1px solid #655545;color:white\">DiveCoders提示框</li>\n";
+        strHtml += " <li style=\"background:#C8B487;text-align:center;font-size:18px;height:180px; padding-top:10px;line-height:80px;border-left:1px solid #655545;border-right:1px solid #655545;color:white\">"+str+"</li>\n";
+        strHtml += " <li style=\"background:#968267;text-align:center;font-weight:bold;height:60px;line-height:25px; border:1px solid #655545;\"><input type=\"button\" value=\"确 定\" onclick=\"doOk()\" style=\"width:80px;height:35px;background:#626262;color:white;border:1px solid white;font-size:16px;line-height:15px;outline:none;margin-top: 10px\"/></li>\n";
+        strHtml += "</ul>\n";
+        alertFram.innerHTML = strHtml;
+        document.body.appendChild(alertFram);
+        document.body.appendChild(shield);
+        this.doOk = function(){
+            alertFram.style.display = "none";
+            shield.style.display = "none";
+        }
+        alertFram.focus();
+        document.body.onselectstart = function(){return false;};
+    }
     </script>
     <script>
         function check(form){
-            if((form.userid.value=="april"&& form.pswrd.value =="123456")||(form.userid.value=="tom"&& form.pswrd.value=="12345678"))
+        	if(form.userid.value==""||form.pswrd.value=="")
+        	{
+        		alert("请输入您的用户名及密码！");
+        		form.reset();
+        	}
+            else if((form.userid.value=="april"&& form.pswrd.value =="123456")||(form.userid.value=="tom"&& form.pswrd.value=="12345678"))
             {
                 alert("Congratulations!登陆成功！");
                 form.reset();
