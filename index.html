@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.0.0.js"></script>
+    <script>
+        window.onload=function(){
+            var user={"username":"April","password":"123456"};
+            var storage=window.localStorage;
+            storage.setItem("user",JSON.stringify(user));
+            var submit=document.getElementsByClassName("submit")[0];
+            submit.onclick=function(){
+                var use=document.getElementsByClassName("user")[0];
+                var pwd=document.getElementsByClassName("password")[0];
+                var str=localStorage.getItem("user");
+                var data=JSON.parse(str);
+                if(use.value==data.username&&pwd.value==data.password){
+                    $(".link").attr("href","note.html");
+                }
+            }
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div id="login">
+    <h1>Login</h1>
+    <form method="post" action="">
+        <input type="text" placeholder="用户名" class="user">
+        <input type="password" placeholder="密码" class="password">
+        <button class="submit" type="submit"><a class="link" href="">登录</a></button>
+    </form>
+</div>
+<img src="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/0F/09/ChMkJlauzYiIIU3UAFNltyuxFDQAAH9GAKkOzMAU2XP642.jpg" width="1400" height="700">
+</body>
+</html>
